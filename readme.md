@@ -1,6 +1,6 @@
 # CheckMobi
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/dt/myckhel/checkmobi.svg?style=flat-square)](https://packagist.org/packages/myckhel/checkmobi)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/myckhel/checkmobi.svg?style=flat-square)](https://packagist.org/packages/myckhel/checkmobi)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Travis](https://img.shields.io/travis/myckhel/check-mobi.svg?style=flat-square)]()
 [![Total Downloads](https://img.shields.io/packagist/dt/myckhel/check-mobi.svg?style=flat-square)](https://packagist.org/packages/myckhel/check-mobi)
