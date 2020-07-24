@@ -15,6 +15,9 @@ class CreateCheckMobiVerificationsTable extends Migration
     {
         Schema::create('check_mobi_verifications', function (Blueprint $table) {
             $table->id();
+            $table->string('number', 30)->index();
+            $table->boolean('validated')->default(false);
+            $table->timestamp('retry_at')->nullable(null);
             $table->timestamps();
         });
     }
