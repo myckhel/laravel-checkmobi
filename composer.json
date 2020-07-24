@@ -1,0 +1,45 @@
+{
+    "name": "myckhel/checkmobi",
+    "description": "A description for check-mobi.",
+    "type": "package",
+    "license": "MIT",
+    "homepage": "https://github.com/myckhel/checkmobi",
+    "keywords": [
+        "laravel", "CheckMobi"
+    ],
+    "authors": [
+        {
+            "name": "myckhel",
+            "email": "myckhel1@hotmail.com"
+        }
+    ],
+    "require": {
+      "illuminate/support": "~5|~6|~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Myckhel\\CheckMobi\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Myckhel\\CheckMobi\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Myckhel\\CheckMobi\\CheckMobiServiceProvider"
+            ],
+            "aliases": {
+                "CheckMobi": "Myckhel\\CheckMobi\\Facades\\CheckMobi"
+            }
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0"
+    }
+}
