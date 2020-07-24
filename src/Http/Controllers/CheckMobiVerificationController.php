@@ -4,10 +4,36 @@ namespace Myckhel\CheckMobi\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use {{ namespacedModel }};
+// use Myckhel\CheckMobi\Support\MissedCall;
+use Myckhel\CheckMobi\Models\CheckMobiVerification;
+use CheckMobi;
 
 class CheckMobiVerificationController extends Controller
 {
+  public function request(Request $request)
+  {
+    $request->validate([
+      'number'                  => 'required',
+      'type'                    => 'required|in:sms,ivr,reverse_cli',
+      'language'                => '',
+      'notification_callback'   => '',
+      'platform'                => 'in:ios,android,web,desktop',
+      'android_app_hash'        => '',
+    ]);
+
+    return CheckMobi::requestValidation($request->all());
+  }
+
+  public function verify(Request $request)
+  {
+    $request->validate([
+      'id'                  => 'required',
+      'pin'                 => 'required',
+      'use_server_hangup'   => 'boolean',
+    ]);
+
+    return CheckMobi::verifyValidation($request->all());
+  }
     /**
      * Display a listing of the resource.
      *
@@ -42,10 +68,10 @@ class CheckMobiVerificationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @param  \CheckMobiVerification  $checkMobiVerification
      * @return \Illuminate\Http\Response
      */
-    public function show({{ model }} ${{ modelVariable }})
+    public function show(CheckMobiVerification $checkMobiVerification)
     {
         //
     }
@@ -53,10 +79,10 @@ class CheckMobiVerificationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @param  \CheckMobiVerification  $checkMobiVerification
      * @return \Illuminate\Http\Response
      */
-    public function edit({{ model }} ${{ modelVariable }})
+    public function edit(CheckMobiVerification $checkMobiVerification)
     {
         //
     }
@@ -65,10 +91,10 @@ class CheckMobiVerificationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @param  \CheckMobiVerification  $checkMobiVerification
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, {{ model }} ${{ modelVariable }})
+    public function update(Request $request, CheckMobiVerification $checkMobiVerification)
     {
         //
     }
@@ -76,10 +102,10 @@ class CheckMobiVerificationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @param  \CheckMobiVerification  $checkMobiVerification
      * @return \Illuminate\Http\Response
      */
-    public function destroy({{ model }} ${{ modelVariable }})
+    public function destroy(CheckMobiVerification $checkMobiVerification)
     {
         //
     }
