@@ -11,12 +11,14 @@ class MissedCall
 {
   use Request, HasQuery;
 
-  public static function request($params)
+  public static function flash($params)
   {
-    $res = self::requestValidation(array_merge([
+    $p = self::merge([
       "type"              => "reverse_cli",
       "use_server_hangup" => true
-    ], $params));
+    ], $params);
+
+    $res = self::requestValidation($p);
     // todo log to db
 
     return $res;

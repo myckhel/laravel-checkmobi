@@ -33,7 +33,7 @@ trait Request
     return self::request($endpoint, $params);
   }
 
-  private static function merge($ar, $arr){
+  public static function merge($ar, $arr){
     return array_merge($ar, $arr);
   }
 
@@ -48,8 +48,7 @@ trait Request
     ])
     ->$method(
       $cm->url.$endpoint,
-      self::merge([
-      ], $params)
+      $params
     );
 
     if ($res->failed()) {
