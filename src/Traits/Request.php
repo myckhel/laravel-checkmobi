@@ -18,6 +18,16 @@ trait Request
     return self::request($endpoint, $params, 'post');
   }
 
+  public static function delete($endpoint, $params)
+  {
+    return self::request($endpoint, $params, 'delete');
+  }
+
+  public static function put($endpoint, $params)
+  {
+    return self::request($endpoint, $params, 'put');
+  }
+
   public static function get($endpoint, $params)
   {
     return self::request($endpoint, $params);
