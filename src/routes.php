@@ -19,5 +19,8 @@ Route::group(['middleware' => $middleware ? explode(',', $middleware) : []], fun
     Route::post('call',                   'Myckhel\CheckMobi\Http\Controllers\CheckMobiVerificationController@placeCall');
     Route::get('call/{id}',               'Myckhel\CheckMobi\Http\Controllers\CheckMobiVerificationController@getCallDetails');
     Route::delete('call/{id}',            'Myckhel\CheckMobi\Http\Controllers\CheckMobiVerificationController@hangUpCall');
+
   });
+
+  Route::resource('/api/checkmobi',        'Myckhel\CheckMobi\Http\Controllers\CheckMobiVerificationController');
 });

@@ -118,17 +118,7 @@ class CheckMobiVerificationController extends Controller
    */
   public function index(Request $request)
   {
-
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create()
-  {
-      //
+    return CheckMobiVerification::paginate($request->pageSize);
   }
 
   /**
@@ -139,7 +129,6 @@ class CheckMobiVerificationController extends Controller
    */
   public function store(Request $request)
   {
-      //
   }
 
   /**
@@ -148,20 +137,9 @@ class CheckMobiVerificationController extends Controller
    * @param  \CheckMobiVerification  $checkMobiVerification
    * @return \Illuminate\Http\Response
    */
-  public function show(CheckMobiVerification $checkMobiVerification)
+  public function show($checkMobiVerification)
   {
-      //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  \CheckMobiVerification  $checkMobiVerification
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(CheckMobiVerification $checkMobiVerification)
-  {
-      //
+    return CheckMobiVerification::findOrFail($checkMobiVerification);
   }
 
   /**
@@ -173,7 +151,9 @@ class CheckMobiVerificationController extends Controller
    */
   public function update(Request $request, CheckMobiVerification $checkMobiVerification)
   {
-      //
+    // $checkMobiVerification = CheckMobiVerification::findOrFail($checkMobiVerification);
+    // $checkMobiVerification->update($request->all());
+    // return $checkMobiVerification;
   }
 
   /**
