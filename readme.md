@@ -5,6 +5,8 @@
 [![Travis](https://img.shields.io/travis/myckhel/check-mobi.svg?style=flat-square)]()
 [![Total Downloads](https://img.shields.io/packagist/dt/myckhel/check-mobi.svg?style=flat-square)](https://packagist.org/packages/myckhel/check-mobi)
 
+## [CheckMobi Doc Link](https://checkmobi.com/documentation.html)
+
 ## Install
 Via Composer
 `$ composer require myckhel/checkmobi`
@@ -22,6 +24,7 @@ This is the default content of the config file ```checkmobi.php```:
 
 return [
   "secret_key"          => env("CHECKMOBI_SECRET_KEY"),
+    /* coming soon */
   "route_middleware"    => 'auth:api', // For injecting middleware to the package's routes
   "retry_after"         => 36000, // flag verification expiry time in seconds
 ];
@@ -31,51 +34,83 @@ Update Your Projects `.env` with:
 CHECKMOBI_SECRET_KEY=XXXXXXXXXXXXXXXXXXXX
 ```
 
-## Basic Usage
+## Available Api's
 ```
 use CheckMobi;
+use Myckhel\CheckMobi\Support\MissedCall;
 
-CheckMobi::requestValidation([
-      'number'                  => '+1 234 567 890', // E. 164 format
-      'type'                    => 'reverse_cli',
-      'platform'                => 'web',
-]);
+CheckMobi::requestValidation($params);
 
-CheckMobi::verifyValidation([
-  "id": "SMS-FF9137C1-4D39-42B0-BE86-4B5A96CE13BD", 
-  "pin":"9711"
-]);
+CheckMobi::verifyValidation($params);
+
+CheckMobi::getAccountDetails($params);
+
+CheckMobi::getCountriesList($params);
+
+CheckMobi::getPrefixes($params);
+
+CheckMobi::checkNumber($params);
+
+CheckMobi::validationStatus($validationId, $params);
+
+CheckMobi::sendSMS($params);
+
+CheckMobi::getSmsDetails($params);
+
+CheckMobi::placeCall($params);
+
+CheckMobi::getCallDetails($callId, $params);
+
+CheckMobi::hangUpCall($callId, $params);
+
+MissedCall::request($params);
+
+MissedCall::verify($params);
 ```
 
-## Available Api's Model
-```
-Myckhel\CheckMobi\Support\MissedCall;
-```
-
-## API Usage
+## API Usage Example
 
 ### MissedCall
 
 ```
 use Myckhel\CheckMobi\Support\MissedCall;
+use CheckMobi;
 
-public function request(){
+class VerificationController {
 
-  return MissedCall::request([
-      'number'                  => '+1 234 567 890', // E. 164 format
-      'platform'                => 'web',
-  ]);
-}
+  public function request(){
 
-public function verify(){
+    return MissedCall::request([
+        'number'                  => '+1 234 567 890', // E. 164 format
+        'platform'                => 'web',
+    ]);
+  }
 
-  return MissedCall::verify([
-      'id'    => 'SMS-FF9137C1-4D39-42B0-BE86-4B5A96CE13BD', // E. 164 format
-      'pin'   => '9711',
-  ]);
+  public function verify(){
+
+    return MissedCall::verify([
+        'id'    => 'SMS-FF9137C1-4D39-42B0-BE86-4B5A96CE13BD', // E. 164 format
+        'pin'   => '9711',
+    ]);
+  }
+
+  public function exampleCheckMobi(){
+
+    $validationResponse = CheckMobi::requestValidation([
+          'number'                  => '+1 234 567 890', // E. 164 format
+          'type'                    => 'reverse_cli',
+          'platform'                => 'web',
+    ]);
+
+    $verificationResponse = CheckMobi::verifyValidation([
+      "id": "SMS-FF9137C1-4D39-42B0-BE86-4B5A96CE13BD", // $validationResponse->id
+      "pin":"9711"
+    ]);
+  }
 }
 ```
-#### Response
+
+#### Response Example
 Request
 ```
 {
@@ -101,6 +136,9 @@ Verify
     "charged_amount": 0.1
 }
 ```
+
+## Todos
+- coming soon
 
 ## Testing
 Run the tests with:
