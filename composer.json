@@ -1,11 +1,11 @@
 {
     "name": "myckhel/checkmobi",
-    "description": "A description for check-mobi.",
+    "description": "CheckMobi APIs are based on HTTP methods, which make it easy to integrate into your own products.",
     "type": "package",
     "license": "MIT",
     "homepage": "https://github.com/myckhel/checkmobi",
     "keywords": [
-        "laravel", "CheckMobi"
+        "laravel", "checkmobi", "check mobi php", "flash call verification", "sms"
     ],
     "authors": [
         {
