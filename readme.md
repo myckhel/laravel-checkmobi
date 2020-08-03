@@ -2,8 +2,8 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/myckhel/checkmobi.svg?style=flat-square)](https://packagist.org/packages/myckhel/checkmobi)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Travis](https://img.shields.io/travis/myckhel/check-mobi.svg?style=flat-square)]()
-[![Total Downloads](https://img.shields.io/packagist/dt/myckhel/check-mobi.svg?style=flat-square)](https://packagist.org/packages/myckhel/check-mobi)
+[![Travis](https://img.shields.io/travis/myckhel/checkmobi.svg?style=flat-square)]()
+[![Total Downloads](https://img.shields.io/packagist/dt/myckhel/checkmobi.svg?style=flat-square)](https://packagist.org/packages/myckhel/checkmobi)
 
 ## [CheckMobi Doc Link](https://checkmobi.com/documentation.html)
 
@@ -158,7 +158,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [myckhel](https://github.com/myckhel)
-- [All Contributors](https://github.com/myckhel/check-mobi/contributors)
+- [All Contributors](https://github.com/myckhel/checkmobi/contributors)
 
 ## Security
 If you discover any security-related issues, please email myckhel1@hotmail.com instead of using the issue tracker.
