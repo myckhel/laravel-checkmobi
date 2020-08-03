@@ -30,7 +30,7 @@ class MissedCall
     $res = self::requestValidation($p);
     $retry_after = config('checkmobi.retry_after');
     // log to db
-    CheckMobiVerification::create([
+    $verification = CheckMobiVerification::create([
       'id'        => $res['id'],
       'type'      => $res['type'],
       'number'    => str_replace(str_split(' -'), '', $res['validation_info']['formatting']),
@@ -39,20 +39,15 @@ class MissedCall
     ]);
 
 
-    return $res;
+    return self::merge($res, ['retry_at' => $verification->retry_at]);
   }
 
   public static function verify($params)
   {
     $res = self::verifyValidation(self::merge([], $params));
-    // todo log to db
+    // update all not validated in db
     if ($res['validated']) {
-      try {
-        CheckMobiVerification::pending($res['number'])->update(['validated' => true]);
-      } catch (\Exception $e) {
-        dd($e);
-      }
-
+      CheckMobiVerification::pending($res['number'])->update(['validated' => true]);
     }
 
     return $res;

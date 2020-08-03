@@ -33,8 +33,8 @@ class CheckMobiVerification extends Model
 
   public function scopeHasActiveRetry($q, $e164Number)
   {
-    return $q->number("+$e164Number")->whereValidated(false)
-    ->whereDate('retry_at', '>', Carbon::now()->timestamp)
+    return $q->number("$e164Number")->whereValidated(false)
+    ->where('retry_at', '>', Carbon::now())
     ->latest();
   }
 }
