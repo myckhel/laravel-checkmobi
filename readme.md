@@ -24,15 +24,17 @@ This is the default content of the config file ```checkmobi.php```:
 
 return [
   "secret_key"          => env("CHECKMOBI_SECRET_KEY"),
+  "retry_after"         => 120, // option to set the retry limit for each phone number verification
     /* coming soon */
   "route_middleware"    => 'auth:api', // For injecting middleware to the package's routes
-  "retry_after"         => 36000, // flag verification expiry time in seconds
 ];
 ```
 Update Your Projects `.env` with:
 ```
 CHECKMOBI_SECRET_KEY=XXXXXXXXXXXXXXXXXXXX
 ```
+Run the database migration
+`php artisan migrate`
 
 ## Available Api's
 ```
