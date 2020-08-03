@@ -7,15 +7,34 @@ use Carbon\Carbon;
 
 class CheckMobiVerification extends Model
 {
-  protected $fillable = ['number', 'validated', 'cc', 'retry_at'];
+  protected $fillable = ['id', 'type', 'number', 'validated', 'cc', 'retry_at'];
+  protected $casts = ['validated' => 'boolean'];
+  protected $dates = ['retry_at'];
 
   public function isValidated()
   {
     return $this->validated;
   }
 
-  public static function numberCanRequest($e164Number)
+  public static function stripNumber($e164Number){
+    return str_replace(str_split(' -'), '', $e164Number);
+  }
+
+  public function scopePending($q, $e164Number)
   {
-    // return self::whereNumber($e164Number)->whereDate('retry_at', '>=', Carbon::now()->timestamp)->first();
+    $q->number($e164Number)->where('validated', false);
+  }
+
+  public function scopeNumber($q, $e164Number)
+  {
+    $number = self::stripNumber($e164Number);
+    $q->whereNumber($number);
+  }
+
+  public function scopeHasActiveRetry($q, $e164Number)
+  {
+    return $q->number("+$e164Number")->whereValidated(false)
+    ->whereDate('retry_at', '>', Carbon::now()->timestamp)
+    ->latest();
   }
 }

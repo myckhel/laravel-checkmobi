@@ -14,11 +14,12 @@ class CreateCheckMobiVerificationsTable extends Migration
     public function up()
     {
         Schema::create('check_mobi_verifications', function (Blueprint $table) {
-            $table->id();
+            $table->string('id', 100)->unique();
             $table->string('number', 30)->index();
             $table->string('cc', 6);
+            $table->string('type', 30)->index(); // eg reverse_cli
             $table->boolean('validated')->default(false);
-            $table->timestamp('retry_at')->nullable(null);
+            $table->dateTimeTz('retry_at')->nullable(null);
             $table->timestamps();
         });
     }

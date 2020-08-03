@@ -10,6 +10,7 @@ trait HasQuery
 {
   public static function requestValidation($params)
   {
+    // check number limit
     return self::post("validation/request", $params)->json();
   }
 
