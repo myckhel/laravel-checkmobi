@@ -18,6 +18,7 @@ class CreateCheckMobiVerificationsTable extends Migration
             $table->string('number', 30)->index();
             $table->string('cc', 6);
             $table->string('type', 30)->index(); // eg reverse_cli
+            $table->string('cli_prefix', 30)->nullable();
             $table->boolean('validated')->default(false);
             $table->dateTimeTz('retry_at')->nullable(null);
             $table->timestamps();

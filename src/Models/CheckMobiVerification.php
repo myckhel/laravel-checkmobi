@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class CheckMobiVerification extends Model
 {
-  protected $fillable = ['id', 'type', 'number', 'validated', 'cc', 'retry_at'];
+  protected $fillable = ['id', 'type', 'number', 'validated', 'cc', 'cli_prefix', 'retry_at'];
   protected $casts = ['validated' => 'boolean'];
   protected $dates = ['retry_at'];
 
