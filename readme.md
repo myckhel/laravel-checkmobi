@@ -20,7 +20,8 @@ You need to publish the configuration file:
 
 This is the default content of the config file ```checkmobi.php```:
 
-```<?php
+```php
+<?php
 
 return [
   "secret_key"          => env("CHECKMOBI_SECRET_KEY"),
@@ -30,14 +31,14 @@ return [
 ];
 ```
 Update Your Projects `.env` with:
-```
+```bash
 CHECKMOBI_SECRET_KEY=XXXXXXXXXXXXXXXXXXXX
 ```
 Run the database migration
 `php artisan migrate`
 
 ## Available Api's
-```
+```php
 use CheckMobi;
 use Myckhel\CheckMobi\Support\MissedCall;
 
@@ -74,7 +75,7 @@ MissedCall::verify($params);
 
 ### MissedCall
 
-```
+```php
 use Myckhel\CheckMobi\Support\MissedCall;
 use CheckMobi;
 
@@ -114,7 +115,7 @@ class VerificationController {
 
 #### Response Example
 Request
-```
+```json
 {
   "id": "RCL-B772A954-7E63-4114-8087-BAF415B5003F",
   "type": "reverse_cli",
@@ -130,7 +131,7 @@ Request
 }
 ```
 Verify
-```
+```json
 {
     "number":"+40XXXXXXXXX",
     "validated":true,
