@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/myckhel/checkmobi.svg?style=flat-square)](https://packagist.org/packages/myckhel/checkmobi)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Travis](https://img.shields.io/travis/myckhel/checkmobi.svg?style=flat-square)]()
+![Tests Status](https://github.com/myckhel/laravel-checkmobi/actions/workflows/php.yml/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/myckhel/checkmobi.svg?style=flat-square)](https://packagist.org/packages/myckhel/checkmobi)
 
 ## [CheckMobi Doc Link](https://checkmobi.com/documentation.html)
